@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.scss";
 
 const AboutMe = () => {
-  // Use useMemo to avoid unnecessary re-creations of the floatingTexts array
-  const floatingTexts = useMemo(() => [
+  const floatingTexts = [
     "I 𝓪𝓶 𝓓𝓮𝓮𝓹𝓲𝓴𝓪 𝓔",
     "𝒥𝒶𝓋𝒶 𝐸𝓃𝓉𝒽𝓊𝓈𝒾𝒶𝓈𝓉",
     "𝐹𝓊𝓁𝓁 𝒮𝓉𝒶𝒸𝓀 𝒟𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇",
     "𝒫𝓇𝑜𝑔𝓇𝒶𝓂𝓂𝑒𝓇",
     "𝒞𝓇𝑒𝒶𝓉𝒾𝓋𝑒 𝒯𝒽𝒾𝓃𝓀𝑒𝓇",
     "𝒫𝓇𝑜𝒷𝓁𝑒𝓂 𝒮𝑜𝓁𝓋𝑒𝓇",
-  ], []); // Empty array ensures that this array is only created once
+  ];
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0); // Tracks the current phrase
   const [displayedText, setDisplayedText] = useState(""); // Text being typed
@@ -31,10 +30,10 @@ const AboutMe = () => {
         }, 1000); // 1-second pause before starting the next phrase
         clearInterval(typeInterval); // Clear the typing interval
       }
-    }, 50); // Typing speed: 50ms per character
+    }, 50); // Typing speed: 100ms per character
 
     return () => clearInterval(typeInterval); // Clean up on unmount
-  }, [charIndex, currentTextIndex]); // Dependency array only includes charIndex and currentTextIndex
+  }, [charIndex, currentTextIndex, floatingTexts]); // Added floatingTexts as a dependency
 
   return (
     <section className="about-me" id="about">
