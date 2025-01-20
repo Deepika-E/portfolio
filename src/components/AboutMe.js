@@ -33,7 +33,7 @@ const AboutMe = () => {
     }, 50); // Typing speed: 100ms per character
 
     return () => clearInterval(typeInterval); // Clean up on unmount
-  }, [charIndex, currentTextIndex, floatingTexts]); // Added floatingTexts as a dependency
+  }, [charIndex, currentTextIndex]); // Removed floatingTexts from dependencies
 
   return (
     <section className="about-me" id="about">
