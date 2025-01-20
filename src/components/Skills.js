@@ -4,7 +4,7 @@ import { FaJava, FaPython, FaHtml5, FaCss3Alt, FaReact, FaGitAlt } from 'react-i
 function Skills() {
   return (
     <section id="skills" className="skills">
-      <h2>𝓜𝔂  𝓢𝓴𝓲𝓵𝓵𝓼</h2>
+      <h2>My Skills</h2>
       <div className="skills-grid">
         <div className="skill">
           <FaJava size={50} className="icon" />

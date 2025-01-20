@@ -11,7 +11,7 @@ function Projects() {
 
   return (
     <section id="projects" className="projects">
-      <h2>𝓟𝓻𝓸𝓳𝓮𝓬𝓽𝓼</h2>
+      <h2>Projects</h2>
       <div className="projects-list">
         {projects.map((project, index) => (
           <div className="project-card" key={index}>

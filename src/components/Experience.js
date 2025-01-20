@@ -17,7 +17,7 @@ function Experience() {
 
   return (
     <section id="experience" className="experience">
-      <h2>𝓔𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮</h2>
+      <h2>Experience</h2>
       <div className="experience-list">
         {experiences.map((exp, index) => (
           <div className="experience-card" key={index}>

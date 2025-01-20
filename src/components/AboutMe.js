@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../App.scss";
 
 const AboutMe = () => {
-  const floatingTexts = [
-    "I 𝓪𝓶 𝓓𝓮𝓮𝓹𝓲𝓴𝓪 𝓔",
-    "𝒥𝒶𝓋𝒶 𝐸𝓃𝓉𝒽𝓊𝓈𝒾𝒶𝓈𝓉",
-    "𝐹𝓊𝓁𝓁 𝒮𝓉𝒶𝒸𝓀 𝒟𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇",
-    "𝒫𝓇𝑜𝑔𝓇𝒶𝓂𝓂𝑒𝓇",
-    "𝒞𝓇𝑒𝒶𝓉𝒾𝓋𝑒 𝒯𝒽𝒾𝓃𝓀𝑒𝓇",
-    "𝒫𝓇𝑜𝒷𝓁𝑒𝓂 𝒮𝑜𝓁𝓋𝑒𝓇",
+  const normalTexts = [
+    "I am Deepika E",
+    "Java Enthusiast",
+    "Full Stack Developer",
+    "Programmer",
+    "Creative Thinker",
+    "Problem Solver",
   ];
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0); // Tracks the current phrase
@@ -18,31 +18,31 @@ const AboutMe = () => {
   useEffect(() => {
     const typeInterval = setInterval(() => {
       // Add one character at a time
-      if (charIndex < floatingTexts[currentTextIndex].length) {
-        setDisplayedText((prev) => prev + floatingTexts[currentTextIndex][charIndex]);
+      if (charIndex < normalTexts[currentTextIndex].length) {
+        setDisplayedText((prev) => prev + normalTexts[currentTextIndex][charIndex]);
         setCharIndex((prev) => prev + 1);
       } else {
         // Pause before clearing the text
         setTimeout(() => {
           setDisplayedText(""); // Clear the text
           setCharIndex(0); // Reset character index
-          setCurrentTextIndex((prev) => (prev + 1) % floatingTexts.length); // Move to the next phrase
+          setCurrentTextIndex((prev) => (prev + 1) % normalTexts.length); // Move to the next phrase
         }, 1000); // 1-second pause before starting the next phrase
         clearInterval(typeInterval); // Clear the typing interval
       }
-    }, 50); // Typing speed: 100ms per character
+    }, 50); // Typing speed: 50ms per character
 
     return () => clearInterval(typeInterval); // Clean up on unmount
-  }, [charIndex, currentTextIndex]); // Removed floatingTexts from dependencies
+  }, [charIndex, currentTextIndex]); // Removed normalTexts from dependencies
 
   return (
     <section className="about-me" id="about">
       <div className="about-me-container">
         {/* Left Section: About Me and Floating Text */}
         <div className="about-me-text">
-          <h2>𝓐𝓫𝓸𝓾𝓽  𝓜𝓮</h2>
+          <h2>About Me</h2>
           <p className="intro">
-            Hello! I’m <span className="highlight"> 𝓓𝓮𝓮𝓹𝓲𝓴𝓪 𝓔</span>, a pre-final year B.Tech student specializing in
+            Hello! I’m <span className="highlight">Deepika E</span>, a pre-final year B.Tech student specializing in
             Information Technology at V.S.B Engineering College. With a strong
             passion for coding and design, I’ve honed my skills as a Java developer
             and web designer. I enjoy working on innovative projects that challenge me to grow both technically and creatively.
