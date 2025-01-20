@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../App.scss";
 
 const AboutMe = () => {
@@ -11,29 +11,30 @@ const AboutMe = () => {
     "Problem Solver",
   ];
 
-  const [currentTextIndex, setCurrentTextIndex] = useState(0); // Tracks the current phrase
-  const [displayedText, setDisplayedText] = useState(""); // Text being typed
-  const [charIndex, setCharIndex] = useState(0); // Tracks the character being typed
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
 
-  useEffect(() => {
+  const typeText = () => {
     const typeInterval = setInterval(() => {
-      // Add one character at a time
       if (charIndex < normalTexts[currentTextIndex].length) {
         setDisplayedText((prev) => prev + normalTexts[currentTextIndex][charIndex]);
         setCharIndex((prev) => prev + 1);
       } else {
-        // Pause before clearing the text
         setTimeout(() => {
-          setDisplayedText(""); // Clear the text
-          setCharIndex(0); // Reset character index
-          setCurrentTextIndex((prev) => (prev + 1) % normalTexts.length); // Move to the next phrase
-        }, 1000); // 1-second pause before starting the next phrase
-        clearInterval(typeInterval); // Clear the typing interval
+          setDisplayedText("");
+          setCharIndex(0);
+          setCurrentTextIndex((prev) => (prev + 1) % normalTexts.length);
+        }, 1000);
+        clearInterval(typeInterval);
       }
-    }, 50); // Typing speed: 50ms per character
+    }, 50);
+  };
 
-    return () => clearInterval(typeInterval); // Clean up on unmount
-  }, [charIndex, currentTextIndex]); // Removed normalTexts from dependencies
+  // Trigger the typing effect once when the component mounts
+  React.useEffect(() => {
+    typeText();
+  }, []); // Empty dependency array ensures it runs only once
 
   return (
     <section className="about-me" id="about">
