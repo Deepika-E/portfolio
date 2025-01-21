@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../App.scss";
 
-const AboutMe = () => {
-  const normalTexts = [
-    "I am Deepika E",
-    "Java Enthusiast",
-    "Full Stack Developer",
-    "Programmer",
-    "Creative Thinker",
-    "Problem Solver",
-  ];
+// Define normalTexts outside the component to ensure a stable reference
+const normalTexts = [
+  "I am Deepika E",
+  "Java Enthusiast",
+  "Full Stack Developer",
+  "Programmer",
+  "Creative Thinker",
+  "Problem Solver",
+];
 
+const AboutMe = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
@@ -30,8 +31,8 @@ const AboutMe = () => {
       }
     }, 50);
 
-    return () => clearInterval(typeInterval); // Clean up interval on unmount
-  }, [charIndex, currentTextIndex]); // Correct dependency array
+    return () => clearInterval(typeInterval);
+  }, [charIndex, currentTextIndex]); // Dependencies are stable now
 
   return (
     <section className="about-me" id="about">
