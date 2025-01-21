@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.scss";
 
 const AboutMe = () => {
@@ -15,7 +15,7 @@ const AboutMe = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
 
-  const typeText = () => {
+  useEffect(() => {
     const typeInterval = setInterval(() => {
       if (charIndex < normalTexts[currentTextIndex].length) {
         setDisplayedText((prev) => prev + normalTexts[currentTextIndex][charIndex]);
@@ -29,12 +29,9 @@ const AboutMe = () => {
         clearInterval(typeInterval);
       }
     }, 50);
-  };
 
-  // Trigger the typing effect once when the component mounts
-  React.useEffect(() => {
-    typeText();
-  }, []); // Empty dependency array ensures it runs only once
+    return () => clearInterval(typeInterval); // Clean up interval on unmount
+  }, [charIndex, currentTextIndex]); // Correct dependency array
 
   return (
     <section className="about-me" id="about">
